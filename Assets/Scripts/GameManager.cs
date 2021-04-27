@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,17 +15,14 @@ public class GameManager : MonoBehaviour
     private int indexCharter = -1;
 
     private GameObject player;
-    [SerializeField] private Vector3 postionStart;
+    public Vector3 postionStart;
 
-
-    //private PlayerController _Player;
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(this);
-
         SelectCharacter(PlayerPrefs.GetInt(SAVE_PLAYER_PREFS.CHARACTER_SELECTED.ToString(), 0));
-        //_Player = GameObject.FindObjectOfType<PlayerController>();
+
     }
 
     private void Update()
@@ -57,28 +55,21 @@ public class GameManager : MonoBehaviour
     //    SaveGame();
     //}
 
-//    public void SaveGame()
-//    {
-//        Debug.Log("Save");
-//        FileStream file = new FileStream(Application.persistentDataPath + "/PlayerController", FileMode.OpenOrCreate);
+    //private void SaveGame()
+    //{
+    //    PlayerPrefs.SetInt(SAVE_PLAYER_PREFS.HP.ToString(), player.GetComponent<PlayerController>().playerBase.ourHealth);
+    //    PlayerPrefs.SetString(SAVE_PLAYER_PREFS.POSITION.ToString(), $"{player.transform.position.x}|{player.transform.position.y}");
+    //}
 
-//        BinaryFormatter formatter = new BinaryFormatter();
+    //public void LoadGame()
+    //{
+    //    if (PlayerPrefs.HasKey(SAVE_PLAYER_PREFS.POSITION.ToString()))
+    //    {
+    //        var positon = PlayerPrefs.GetString(SAVE_PLAYER_PREFS.POSITION.ToString()).Split('|');
+    //        GameManager.instance.postionStart = new Vector3(float.Parse(positon[0]), float.Parse(positon[1]));
 
-//        formatter.Serialize(file, _Player.playerBase);
-
-//        file.Close();
-//}
-
-//    public void LoadGame()
-//    {
-//        FileStream file = new FileStream(Application.persistentDataPath + "/PlayerController.dat", FileMode.Open);
-
-//        BinaryFormatter formatter = new BinaryFormatter();
-
-//        _Player.playerBase = (PlayerBasic)formatter.Deserialize(file);
-
-//        file.Close();
-//    }
+    //    }
+    //}
 }
 
 public enum SAVE_PLAYER_PREFS
@@ -87,5 +78,7 @@ public enum SAVE_PLAYER_PREFS
     itemHP,
     itemSpeedShoes,
     itemMagnet,
-    CHARACTER_SELECTED
+    CHARACTER_SELECTED,
+    HP,
+    POSITION
 }

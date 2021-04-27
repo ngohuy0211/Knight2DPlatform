@@ -21,13 +21,11 @@ public class BossLevel1Action : BasicEnemy
     }
     private void Update()
     {
-        BossRangeCheck();
-        CheckBossDied();
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
+       
         if (target == null)
             target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        else
+            BossRangeCheck();
 
         if (this.transform.position.x < target.transform.position.x && !faceRight)
             Flip();
@@ -71,8 +69,9 @@ public class BossLevel1Action : BasicEnemy
         }
     }
 
-    public void CheckBossDied()
+    public override void Damage(int damage)
     {
+        base.Damage(damage);
         if (EnemyData.HP < 0)
         {
             SoundManager.Instance.PlaySound("BossDied");

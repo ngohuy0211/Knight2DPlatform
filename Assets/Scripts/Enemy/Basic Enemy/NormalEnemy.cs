@@ -13,6 +13,14 @@ public class NormalEnemy : BasicEnemy
 
     private bool fromAtoB = false;
 
+    public override void Damage(int damage)
+    {
+        base.Damage(damage);
+        if(EnemyData.HP <= 0)
+        {
+            SoundManager.Instance.PlaySound("MonsterDied");
+        }
+    }
     private void FixedUpdate()
     {
         Vector2 move = new Vector2(EnemyData.Speed * Time.deltaTime * (fromAtoB ? 1f : -1f), 0);

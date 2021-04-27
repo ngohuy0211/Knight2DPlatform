@@ -60662,6 +60662,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 72098237}
     m_Modifications:
+    - target: {fileID: 731788962, guid: 34e85c7c12a1a734eaeddb814bea14fb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 467259709121011442, guid: 34e85c7c12a1a734eaeddb814bea14fb, type: 3}
       propertyPath: m_Name
       value: PatrolGuyContainer
@@ -60784,6 +60788,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1208606562105202987, guid: 30fca9bb0cffc3b4c966ce9ba80a1930, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c9b856de08bc264ab4e7dfce43776c1, type: 2}
     - target: {fileID: 1230480904990911000, guid: 30fca9bb0cffc3b4c966ce9ba80a1930, type: 3}
       propertyPath: m_Name
       value: Main Camera

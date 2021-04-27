@@ -10,17 +10,26 @@ public class BasicEnemy : MonoBehaviour
     public SpriteRenderer characterSprite;
     public float knockPow;
 
-    public void Damage(int damage)
+    public virtual void Damage(int damage)
     {
         EnemyData.HP -= damage;
         if (EnemyData.HP <= 0)
         {
-            SoundManager.Instance.PlaySound("MonsterDied");
             Destroy(gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        player = collision.GetComponent<PlayerController>();
+    //        player.Damage(EnemyData.damage);
+    //        player.KnockBack(this.transform.position.x, knockPow, player.transform.position);
+    //    }
+    //}
+   
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
